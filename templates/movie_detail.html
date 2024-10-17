@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="movie-detail">
+    <div class="title-img">
+        <h1>{{ movie.title }}</h1>
+        <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+    </div>
+        <div class="content">
+           
+            <div class="movie-info">
+                <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+            <p><strong>Rating:</strong> {{ movie.vote_average }} / 10</p>
+            <p><strong>Overview:</strong> {{ movie.overview }}</p>
+            <p><strong>Genres:</strong>
+                {% for genre in movie.genres %}
+                    {{ genre.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Language:</strong> {{ movie.original_language }}</p>
+            
+            </div>
+            {% if trailer_key %}
+                <div class="trailer">
+                    <h3>Trailer</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ trailer_key }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            {% endif %}
+        </div>
+</div>
+{% endblock %}

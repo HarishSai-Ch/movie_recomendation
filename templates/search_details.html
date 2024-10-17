@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Search Results for {{result}} Movie(s) </h1>
+<div class="movie-list" id="movie-list">
+    {% for movie in movies %}
+    <div class="movie">
+        <a href="/movie/{{movie.id}}">
+            <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+            <div class="movie-title">{{ movie.title }}</div>
+        </a>
+    </div>
+    {% else %}
+    <div class="no-results">No results found for your search.</div>
+    {% endfor %}
+</div>
+{% endblock %}

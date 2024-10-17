@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <h1><a href="/">iHARISH</a></h1>
+            <div class="navbar_btns">
+                <form action="/search" method="POST" style="display:inline;" class="search-form">
+                    <input type="text" name="query" placeholder="Search for a movie" class="search-input" required>
+                    <button type="submit" class="search-button" >Search </button>
+                </form>
+                <form action="/hollywood-movies" method="POST">
+                    <button type="submit">English Movies</button>
+                </form>
+                <form action="/bollywood-movies" method="POST">
+                    <button type="submit">Hindi Movies</button>
+                </form>
+            </div>
+           
+        </div>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+   
+</body>
+</html>

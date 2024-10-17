@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if home %}
+<div class="welcome_msg">
+    <h2>Welcome to the Movie Recommendation Website!</h2>
+    <p>Find the best movies to watch based on your preferences.</p>
+    <p>Explore the best movies!</p>
+</div>
+
+{% endif %}
+<h1>Popular {{lan}} Movies:</h1>
+<div class="movie-list">
+    {% for movie in movies %}
+    <div class="movie">
+        <a href="/movie/{{movie.id}}">
+            <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+            <div class="movie-title">{{ movie.title }}</div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
